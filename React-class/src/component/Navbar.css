@@ -1,0 +1,10 @@
+nav{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+li{
+    padding-right: 50px;
+}
+a:hover {
+    text-decoration: underline;
+}
