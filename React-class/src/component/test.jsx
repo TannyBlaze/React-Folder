@@ -1,15 +1,19 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
+
 
 function Test() {
-    let url = "http://localhost:3000/user/register"
 
-    const clickme = () => {
-        axios.post(url, { email: "tanimolatoyeseiyiola@gmail.com", username: "Tannyblaze" })
-    }
+    const [email, setEmail] = useState()
+    const [userName, setUserName] = useState()
+    const [password, setPassword] = useState()
+    
+    
     return (
         <div>
-            <button onClick={clickme}>Click</button>
+            <input type="text" placeholder='Email' onChange={(event) => setEmail(event.target.value)} />
+            <input type="text" placeholder='Username' onChange={(event) => setUserName(event.target.value)} />
+            <input type="text" placeholder='Password' onChange={(event) => setPassword(event.target.value)} />
+            <button>Submit</button>
         </div>
     )
 }

@@ -14,6 +14,9 @@ import Button from './component/Props/Button'
 import { Route, Routes , Navigate } from 'react-router-dom'
 import Test from './component/test'
 import NotFound from './component/NotFound'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Formik from './pages/Formik'
 
 function App() {
   let name = "edit"
@@ -27,7 +30,21 @@ function App() {
   }
   
   return (
-    <>
+    <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
       {/* <Test /> */}
       <Navbar />
       <Routes>
@@ -38,6 +55,7 @@ function App() {
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/formik' element={<Formik />} />
       </Routes>
       {/*<Fetch />
       
@@ -47,7 +65,7 @@ function App() {
       <UseEffect /> 
       <Button editFunction={handleEdit} name= {name} />
       <Button editFunction={handleDelete} name="delete" /> */}
-    </>
+    </div>
   )
 }
 
