@@ -30,12 +30,12 @@ function SignIn() {
                 </div>
                 <div className="form-outline mb-4">
                     <input type="password" id="form12" className="form-control border border-dark" onChange={(e) => { setPassword(e.target.value) }} />
-                    <label className="form-label bg-white" htmlFor="form12" style={{ marginTop: 1 }}>Password</label>
+                    <label className="form-label bg-white" htmlFor="form12" style={{ marginTop: 1, paddingLeft: 3, paddingRight: 3 }}>Password</label>
                 </div>
-                <button className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Log In</button>
+                <Link to={"/Dashboard"}><button className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Log In</button></Link>
                 <div className="row mb-4">
                     <div className="text-center row d-flex justify-content-center">
-                        <div className="col"><Link to={""}>Forgot Password?</Link></div>
+                        <div className="col"><Link to={"/ForgotPassword"}>Forgot Password?</Link></div>
                         <div className="col"><Link to={"/SignUp"}>Create Account</Link></div>
                     </div>
                 </div>

@@ -2,9 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './component/Navbar'
 import Event from './component/Event'
-import SignIn from './pages/Login/SignIn'
+import SignIn from './pages/LogIn/SignIn'
 import SignUp from './pages/Login/SignUp'
 import Dashboard from './pages/Dashboard'
+import ForgotPassword from './pages/ForgotPassword'
 import Fetch from './component/Fetch'
 import UseEffect from './component/UseEffect'
 import Home from './pages/Home'
@@ -53,6 +54,7 @@ function App() {
         <Route path='/home' element={<Navigate to= '/'/>} />
         <Route path='/about/:id' element={<About />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/forgotpassword' element={<ForgotPassword />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
