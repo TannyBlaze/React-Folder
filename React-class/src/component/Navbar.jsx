@@ -8,6 +8,7 @@ function Navbar() {
                 <div className="container-fluid">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item"><Link to={"/"} className="nav-link text-info">Home</Link></li>
+                        <li className="nav-item"><Link to={"/dashboard"} className="nav-link">Dashboard</Link></li>
                         <li className="nav-item"><Link to={"/about"} className="nav-link">About</Link></li>
                         <li className="nav-item"><Link to={"/contact"} className="nav-link">Contact</Link></li>
                         

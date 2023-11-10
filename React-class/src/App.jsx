@@ -4,6 +4,7 @@ import Navbar from './component/Navbar'
 import Event from './component/Event'
 import SignIn from './pages/Login/SignIn'
 import SignUp from './pages/Login/SignUp'
+import Dashboard from './pages/Dashboard'
 import Fetch from './component/Fetch'
 import UseEffect from './component/UseEffect'
 import Home from './pages/Home'
@@ -51,6 +52,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Navigate to= '/'/>} />
         <Route path='/about/:id' element={<About />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
