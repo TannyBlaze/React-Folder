@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Navbar from './component/Navbar'
 import Event from './component/Event'
@@ -21,15 +22,26 @@ import 'react-toastify/dist/ReactToastify.css';
 import Formik from './pages/Formik'
 
 function App() {
-  let name = "edit"
+  useEffect(() => {
+    if ("ServiceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((reg) => console.log("Service worker registered"))
+          .catch((err) => console.log("Service worker not registered", err));
+      });
+    }
+  }, []);
 
-  const handleEdit = () => {
-    alert("edit")
-  }
+  //let name = "edit"
+  
+  // const handleEdit = () => {
+  //   alert("edit")
+  // }
 
-  const handleDelete = () => {
-    alert("delete")
-  }
+  // const handleDelete = () => {
+  //   alert("delete")
+  // }
   
   return (
     <div>
