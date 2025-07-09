@@ -20,6 +20,8 @@ import NotFound from './component/NotFound'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Formik from './pages/Formik'
+import ClassComponent from './component/ClassComponent'
+import FileUpload from './pages/FileUpload'
 
 function App() {
   useEffect(() => {
@@ -71,14 +73,19 @@ function App() {
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/class' element={<ClassComponent />} />
         <Route path='/formik' element={<Formik />} />
+        <Route path='/upload' element={<FileUpload />} />
       </Routes>
+      <Button title="edit" color="btn btn-success" />
+      <Button title="delete" color="btn btn-danger" />
+      <Button title="action" color="btn btn-warning" />
       {/*<Fetch />
       
       <Event />
       <SignIn />
       <SignUp />
-      <UseEffect /> 
+      <UseEffect />
       <Button editFunction={handleEdit} name= {name} />
       <Button editFunction={handleDelete} name="delete" /> */}
     </div>

@@ -16,7 +16,7 @@ function SignUp() {
         }
         setAllUsers({...allUsers, obj})
     };
-    let url = "http://localhost:3000/user/register"
+    let url = "https://modularization-k0gy.onrender.com/user/register"
 
     const clickme = () => {
         axios.post(url, {

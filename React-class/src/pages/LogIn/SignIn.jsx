@@ -1,19 +1,26 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
-    let url = "http://localhost:3000/user/register"
+    const navigate = useNavigate();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    
+    let url = "https://modularization-k0gy.onrender.com/user/register"
     
     const handleSubmit = () => {
         axios.post(url, {
             email: email,
             password: password
         }).then((res)=> {
-            console.log(res.data)
+            toast(res.data.message)
+            if (res.data.message == "Login suceessful") {
+                localStorage.setItem('token', res.data.token)
+                navigate('/dashboard')
+            }
         }).catch((err) => {
             console.log(err)
         })
@@ -32,7 +39,7 @@ function SignIn() {
                     <input type="password" id="form12" className="form-control border border-dark" onChange={(e) => { setPassword(e.target.value) }} />
                     <label className="form-label bg-white" htmlFor="form12" style={{ marginTop: 1, paddingLeft: 3, paddingRight: 3 }}>Password</label>
                 </div>
-                <Link to={"/Dashboard"}><button className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Log In</button></Link>
+                <button className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Log In</button>
                 <div className="row mb-4">
                     <div className="text-center row d-flex justify-content-center">
                         <div className="col"><Link to={"/ForgotPassword"}>Forgot Password?</Link></div>
