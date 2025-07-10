@@ -1,23 +1,31 @@
+const jwt = require('jsonwebtoken');
 const QuizHistory = require('../models/quizHistory.model');
 
-const saveHistory = async (req, res) => {
-    const { userId, category, score, total } = req.body;
+exports.verifyToken = (req, res, next) => {
+    const auth = req.headers.authorization;
+    if (!auth) return res.status(401).json({ message: 'No token' });
+    const token = auth.split(' ')[1];
     try {
-        const history = await QuizHistory.create({ userId, category, score, total });
-        res.status(201).json(history);
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+        req.user = jwt.verify(token, process.env.JWT_SECRET);
+        next();
+    } catch {
+        res.status(401).json({ message: 'Invalid token' });
     }
 };
 
-const getHistoryByUser = async (req, res) => {
-    const { userId } = req.params;
-    try {
-        const history = await QuizHistory.find({ userId }).sort({ date: -1 });
-        res.json(history);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+exports.saveQuizHistory = async (req, res) => {
+    const { category, score, total, answers } = req.body;
+    const history = await QuizHistory.create({
+        userId: req.user.userId,
+        category,
+        score,
+        total,
+        answers
+    });
+    res.status(201).json(history);
 };
 
-module.exports = { saveHistory, getHistoryByUser };
+exports.getUserHistory = async (req, res) => {
+    const history = await QuizHistory.find({ userId: req.user.userId }).sort({ createdAt: -1 });
+    res.json(history);
+};

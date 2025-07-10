@@ -1,7 +1,9 @@
 // src/pages/Quiz.jsx
 import { useState } from 'react';
 import '../App.css';
-import questions from '../data/questions'; // Import the question sets
+import questions from '../data/questions';
+import { saveQuizHistory } from '../services/api';
+
 
 const questionSets = questions;
 
@@ -70,9 +72,24 @@ function Quiz({ username, category, onFinish }) {
         }
     };
 
-    const handleFinish = () => {
+    const handleFinish = async () => {
         setShowResult(true);
+
+        const data = {
+            category,
+            score: finalScore,
+            total: questions.length,
+            answers: userAnswers
+        };
+
+        try {
+            await saveQuizHistory(data);
+            console.log('Quiz history saved!');
+        } catch (err) {
+            console.error('Failed to save quiz history:', err?.response?.data || err.message);
+        }
     };
+    
 
     const finalScore = userAnswers.filter(ans => ans?.isCorrect).length;
 

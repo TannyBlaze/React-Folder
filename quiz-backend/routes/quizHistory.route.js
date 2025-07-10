@@ -1,8 +1,6 @@
 const express = require('express');
+const { saveQuizHistory, getUserHistory, verifyToken } = require('../controllers/quizHistory.controller');
 const router = express.Router();
-const { saveHistory, getHistoryByUser } = require('../controllers/quizHistory.controller');
-
-router.post('/', saveHistory);
-router.get('/:userId', getHistoryByUser);
-
+router.post('/', verifyToken, saveQuizHistory);
+router.get('/', verifyToken, getUserHistory);
 module.exports = router;
