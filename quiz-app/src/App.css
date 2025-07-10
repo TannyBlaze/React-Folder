@@ -132,6 +132,11 @@ html,
   background-color: #4b5563;
 }
 
+.option-btn.selected {
+  border: 2px solid #10b981;
+  background-color: #1f2937;
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -189,4 +194,36 @@ html,
 .result-card p {
   margin: 0.25rem 0;
   color: #ccc;
+}
+
+.progress-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.progress-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.progress-dot.unanswered {
+  background-color: #4b5563;
+  color: white;
+}
+
+.progress-dot.answered {
+  background-color: #10b981;
+  color: white;
+}
+
+.progress-dot.active {
+  border: 2px solid white;
 }

@@ -18,7 +18,7 @@ function Auth({ onLogin }) {
 
     return (
         <>
-            <h1 className="login-title"> Quiz App {isLogin ? 'Login' : 'Sign Up'}</h1>
+            <h1 className="login-title">{isLogin ? 'Login' : 'Sign Up'}</h1>
 
             <form className="login-form" onSubmit={handleAuth}>
                 <input
